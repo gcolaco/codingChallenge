@@ -12,7 +12,7 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     
     var safeArea: UILayoutGuide!
-    let imageIV = UIImageView()
+    let imageIV = CustomImageView()
     let artistNameLabel = UILabel()
     let releaseDateLabel = UILabel()
     let nameLabel = UILabel()

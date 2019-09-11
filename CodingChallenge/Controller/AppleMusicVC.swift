@@ -90,6 +90,10 @@ extension AppleMusicVC: UITableViewDataSource {
         
         let music = musics[indexPath.row]
         
+        if let url = URL(string: music.artworkUrl100) {
+            musicCell.imageIV.loadImage(from: url)
+        }
+        
         musicCell.artistNameLabel.text = music.artistName
         musicCell.releaseDateLabel.text = music.releaseDate
         musicCell.nameLabel.text = music.name

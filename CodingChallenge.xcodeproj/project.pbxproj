@@ -17,6 +17,7 @@
 		72546A122329988D00152118 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A112329988D00152118 /* CustomTableViewCell.swift */; };
 		72546A3323299FE500152118 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A3223299FE500152118 /* APIModel.swift */; };
 		72546A362329A06E00152118 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A352329A06E00152118 /* ApiRequest.swift */; };
+		72546A382329AB6100152118 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A372329AB6100152118 /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		72546A112329988D00152118 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		72546A3223299FE500152118 /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
 		72546A352329A06E00152118 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		72546A372329AB6100152118 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				72546A112329988D00152118 /* CustomTableViewCell.swift */,
+				72546A372329AB6100152118 /* CustomImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72546A3323299FE500152118 /* APIModel.swift in Sources */,
+				72546A382329AB6100152118 /* CustomImageView.swift in Sources */,
 				72546A122329988D00152118 /* CustomTableViewCell.swift in Sources */,
 				72546A10232997B300152118 /* DarkModeVC.swift in Sources */,
 				72546A0D2329979A00152118 /* AppsVC.swift in Sources */,

@@ -77,6 +77,10 @@ extension MoviesVC: UITableViewDataSource {
         
         let movie = movies[indexPath.row]
         
+        if let url = URL(string: movie.artworkUrl100) {
+            movieCell.imageIV.loadImage(from: url)
+        }
+        
         
         movieCell.artistNameLabel.text = movie.artistName
         movieCell.releaseDateLabel.text = movie.releaseDate

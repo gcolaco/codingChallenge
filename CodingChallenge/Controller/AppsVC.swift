@@ -80,6 +80,10 @@ extension AppsVC: UITableViewDataSource {
         
         let app = apps[indexPath.row]
         
+        if let url = URL(string: app.artworkUrl100) {
+            appCell.imageIV.loadImage(from: url)
+        }
+        
         appCell.artistNameLabel.text = app.artistName
         appCell.nameLabel.text = app.name
         appCell.releaseDateLabel.text = app.releaseDate
