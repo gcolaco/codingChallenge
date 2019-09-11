@@ -45,7 +45,7 @@ class AppsVC: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "appCell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: APP_CELL)
     }
     
     func getResponse (feedUrl: String) {
@@ -71,7 +71,7 @@ extension AppsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "appCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: APP_CELL, for: indexPath)
         
         guard let appCell = cell as? CustomTableViewCell else {
             return cell

@@ -44,7 +44,7 @@ class MoviesVC: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "movieCell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: MOVIE_CELL)
     }
     
     func getResponse (feedUrl: String) {
@@ -68,7 +68,7 @@ extension MoviesVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: MOVIE_CELL, for: indexPath)
         
         guard let movieCell = cell as? CustomTableViewCell else {
             return cell

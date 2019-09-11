@@ -54,7 +54,7 @@ class AppleMusicVC: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "musicCell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: APPLE_MUSIC_CELL)
 
     }
     
@@ -81,7 +81,7 @@ extension AppleMusicVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: APPLE_MUSIC_CELL, for: indexPath)
         
         guard let musicCell = cell as? CustomTableViewCell else {
             return cell
