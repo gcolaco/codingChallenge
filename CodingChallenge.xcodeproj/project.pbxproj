@@ -19,6 +19,13 @@
 		72546A362329A06E00152118 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A352329A06E00152118 /* ApiRequest.swift */; };
 		72546A382329AB6100152118 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A372329AB6100152118 /* CustomImageView.swift */; };
 		72546A3A2329B10700152118 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A392329B10700152118 /* Keys.swift */; };
+		72546A3D2329B1EA00152118 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A3C2329B1EA00152118 /* Theme.swift */; };
+		72546A3F2329B2E900152118 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A3E2329B2E900152118 /* ThemeManager.swift */; };
+		72546A412329B30C00152118 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A402329B30C00152118 /* ThemeCell.swift */; };
+		72546A432329B32300152118 /* ThemeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A422329B32300152118 /* ThemeTable.swift */; };
+		72546A452329B34500152118 /* ThemeNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A442329B34500152118 /* ThemeNavigation.swift */; };
+		72546A472329B36200152118 /* ThemeTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A462329B36200152118 /* ThemeTabController.swift */; };
+		72546A492329B38000152118 /* ThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A482329B38000152118 /* ThemeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +43,13 @@
 		72546A352329A06E00152118 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		72546A372329AB6100152118 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		72546A392329B10700152118 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		72546A3C2329B1EA00152118 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		72546A3E2329B2E900152118 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		72546A402329B30C00152118 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		72546A422329B32300152118 /* ThemeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTable.swift; sourceTree = "<group>"; };
+		72546A442329B34500152118 /* ThemeNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigation.swift; sourceTree = "<group>"; };
+		72546A462329B36200152118 /* ThemeTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTabController.swift; sourceTree = "<group>"; };
+		72546A482329B38000152118 /* ThemeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +86,7 @@
 				72546A062329953800152118 /* View */,
 				72546A072329953C00152118 /* Controller */,
 				72546A3423299FFE00152118 /* Networking */,
+				72546A3B2329B1CC00152118 /* Theme */,
 				72546A392329B10700152118 /* Keys.swift */,
 				725469F32329939500152118 /* AppDelegate.swift */,
 				725469FA2329939600152118 /* Assets.xcassets */,
@@ -115,6 +130,20 @@
 				72546A352329A06E00152118 /* ApiRequest.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		72546A3B2329B1CC00152118 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				72546A3C2329B1EA00152118 /* Theme.swift */,
+				72546A3E2329B2E900152118 /* ThemeManager.swift */,
+				72546A402329B30C00152118 /* ThemeCell.swift */,
+				72546A422329B32300152118 /* ThemeTable.swift */,
+				72546A442329B34500152118 /* ThemeNavigation.swift */,
+				72546A462329B36200152118 /* ThemeTabController.swift */,
+				72546A482329B38000152118 /* ThemeController.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,15 +217,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				72546A3323299FE500152118 /* APIModel.swift in Sources */,
+				72546A472329B36200152118 /* ThemeTabController.swift in Sources */,
+				72546A452329B34500152118 /* ThemeNavigation.swift in Sources */,
 				72546A382329AB6100152118 /* CustomImageView.swift in Sources */,
 				72546A122329988D00152118 /* CustomTableViewCell.swift in Sources */,
 				72546A10232997B300152118 /* DarkModeVC.swift in Sources */,
+				72546A3D2329B1EA00152118 /* Theme.swift in Sources */,
 				72546A0D2329979A00152118 /* AppsVC.swift in Sources */,
+				72546A492329B38000152118 /* ThemeController.swift in Sources */,
 				725469F42329939500152118 /* AppDelegate.swift in Sources */,
 				72546A092329957300152118 /* AppleMusicVC.swift in Sources */,
+				72546A432329B32300152118 /* ThemeTable.swift in Sources */,
+				72546A412329B30C00152118 /* ThemeCell.swift in Sources */,
 				72546A362329A06E00152118 /* ApiRequest.swift in Sources */,
 				72546A0B2329978D00152118 /* MoviesVC.swift in Sources */,
 				72546A3A2329B10700152118 /* Keys.swift in Sources */,
+				72546A3F2329B2E900152118 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

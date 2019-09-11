@@ -20,34 +20,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
          //MARK: - NavController Setting
         let appleMusicVC = AppleMusicVC()
-        let appleMusicNavController = UINavigationController(rootViewController: appleMusicVC)
+        let appleMusicNavController = ThemeNavigation(rootViewController: appleMusicVC)
         appleMusicVC.navigationItem.title = "Apple Music - Top Albuns"
         
         let moviesVC = MoviesVC()
-        let moviesNavController = UINavigationController(rootViewController: moviesVC)
+        let moviesNavController = ThemeNavigation(rootViewController: moviesVC)
         moviesVC.navigationItem.title = "Top Movies"
-
+        
         let appVC = AppsVC()
-        let appsNavController = UINavigationController(rootViewController: appVC)
+        let appsNavController = ThemeNavigation(rootViewController: appVC)
         appVC.navigationItem.title = "Top Apps"
-
+        
         let darkModeVC = DarkModeVC()
-        let darkModeNavController = UINavigationController(rootViewController: darkModeVC)
+        let darkModeNavController = ThemeNavigation(rootViewController: darkModeVC)
         darkModeVC.navigationItem.title = "Dark Mode"
         
         //MARK: - TabBar Setting
-        
-        let tabController = UITabBarController()
+        let tabController = ThemeTabController()
         tabController.viewControllers = [appsNavController, appleMusicNavController, moviesNavController, darkModeNavController]
+        
         appleMusicNavController.tabBarItem.title = "Apple Music"
         appleMusicNavController.tabBarItem.image = UIImage(named: "musicIcon")
         
         moviesNavController.tabBarItem.title = "Movies"
         moviesNavController.tabBarItem.image = UIImage(named: "movieIcon")
-
+        
         appsNavController.tabBarItem.title = "Top Apps"
         appsNavController.tabBarItem.image = UIImage(named: "appIcon24")
-
+        
         darkModeNavController.tabBarItem.title = "Dark Mode"
         darkModeNavController.tabBarItem.image = UIImage(named: "darkModeIcon")
         

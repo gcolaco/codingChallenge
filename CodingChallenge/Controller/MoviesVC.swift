@@ -9,9 +9,8 @@
 
 import UIKit
 
-class MoviesVC: UIViewController {
-    let tableView = UITableView()
-    
+class MoviesVC: ThemeController {
+    let tableView = ThemeTable()
     var feed = "us/movies/top-movies/all/50/explicit.json"
     var movies = [ApiDetails]() {
         didSet{
@@ -32,6 +31,7 @@ class MoviesVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupDarkMode()
         self.tableView.reloadData()
     }
     
@@ -57,6 +57,19 @@ class MoviesVC: UIViewController {
                 self?.movies = movies
             }
         }
+    }
+    
+    
+    private func setupDarkMode() {
+        ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkMode))
+    }
+    
+    @objc func enableDarkMode() {
+        let currentTheme = ThemeManager.currentTheme
+        view.backgroundColor = currentTheme.backgroundColor
+        tableView.backgroundColor = currentTheme.backgroundColor
+        navigationController?.navigationBar.barTintColor = currentTheme.backgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: currentTheme.textColor]
     }
     
 }

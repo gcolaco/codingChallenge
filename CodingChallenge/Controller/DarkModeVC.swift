@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DarkModeVC: UIViewController {
+class DarkModeVC: ThemeController {
     let darkModeLabel = UILabel()
     let darkModeSwitch = UISwitch()
     
@@ -40,9 +40,21 @@ class DarkModeVC: UIViewController {
         darkModeSwitch.topAnchor.constraint(equalTo: darkModeLabel.bottomAnchor, constant: 10).isActive = true
         darkModeSwitch.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         
+        darkModeSwitch.isOn = ThemeManager.isDarkMode()
+        darkModeSwitch.addTarget(self, action: #selector(darkModeAction), for: .touchUpInside)
         
         
     }
     
+    
+    @objc func darkModeAction(_ toggle: UISwitch) {
+        toggle.isOn ? ThemeManager.enableDarkMode() : ThemeManager.disableDarkMode()
+    }
+    
+    override func handleDarkMode(theme: Theme) {
+        super.handleDarkMode(theme: theme)
+        darkModeLabel.textColor = theme.textColor
+    }
 }
+
 

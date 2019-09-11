@@ -8,11 +8,9 @@
 
 import UIKit
 
-class AppsVC: UIViewController {
-    let tableView = UITableView()
-    
-    var feed = "us/apple-music/top-albums/all/50/explicit.json"
-    
+class AppsVC: ThemeController {
+    let tableView = ThemeTable()
+    var feed = "us/ios-apps/new-apps-we-love/all/50/explicit.json"
     var apps = [ApiDetails]() {
         didSet{
             DispatchQueue.main.async {
@@ -32,10 +30,10 @@ class AppsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupDarkMode()
         self.tableView.reloadData()
     }
     
-    //MARK: - TableView UI constraints
     private func setupTableView(){
         view.addSubview(tableView)
         
@@ -59,12 +57,22 @@ class AppsVC: UIViewController {
             }
         }
     }
-
+    
+    private func setupDarkMode() {
+        ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkMode))
+    }
+    
+    @objc func enableDarkMode() {
+        let currentTheme = ThemeManager.currentTheme
+        view.backgroundColor = currentTheme.backgroundColor
+        tableView.backgroundColor = currentTheme.backgroundColor
+        navigationController?.navigationBar.barTintColor = currentTheme.backgroundColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: currentTheme.textColor]
+    }
     
 }
 
 
-//MARK: - TableView DataSource
 extension AppsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
@@ -84,9 +92,10 @@ extension AppsVC: UITableViewDataSource {
             appCell.imageIV.loadImage(from: url)
         }
         
+        
         appCell.artistNameLabel.text = app.artistName
-        appCell.nameLabel.text = app.name
         appCell.releaseDateLabel.text = app.releaseDate
+        appCell.nameLabel.text = app.name
         
         
         return cell
@@ -94,11 +103,9 @@ extension AppsVC: UITableViewDataSource {
     }
 }
 
-//MARK: - TableView Delegate
 extension AppsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
-
 }
 
