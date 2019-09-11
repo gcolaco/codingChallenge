@@ -10,14 +10,23 @@ import UIKit
 
 class AppsVC: UIViewController {
     let tableView = UITableView()
-    var apps = ["aaa", "vvv", "dddd"]
+    
+    var feed = "us/apple-music/top-albums/all/50/explicit.json"
+    
+    var apps = [ApiDetails]() {
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
-        
+        getResponse(feedUrl: feed)
         setupTableView()
     }
     
@@ -38,6 +47,20 @@ class AppsVC: UIViewController {
         
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "appCell")
     }
+    
+    func getResponse (feedUrl: String) {
+        let movieRequest = ApiRequest(feedUrl: feed)
+        movieRequest.getApiDatas {[weak self] result in
+            switch result{
+            case .failure(let error):
+                print(error)
+            case .success(let apps):
+                self?.apps = apps
+            }
+        }
+    }
+
+    
 }
 
 
@@ -57,7 +80,9 @@ extension AppsVC: UITableViewDataSource {
         
         let app = apps[indexPath.row]
         
-        appCell.nameLabel.text = app
+        appCell.artistNameLabel.text = app.artistName
+        appCell.nameLabel.text = app.name
+        appCell.releaseDateLabel.text = app.releaseDate
         
         
         return cell

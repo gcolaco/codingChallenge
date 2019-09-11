@@ -13,7 +13,16 @@ import UIKit
 class AppleMusicVC: UIViewController {
     let tableView = UITableView()
     
-    var musics = ["aaa", "bbbb", "cccc", "ddd"]
+    var feed = "us/apple-music/top-albums/all/50/explicit.json"
+    
+    var musics = [ApiDetails]() {
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     
     
     
@@ -22,6 +31,8 @@ class AppleMusicVC: UIViewController {
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
+        
+        getResponse(feedUrl: feed)
 
         setupTableView()
         
@@ -46,6 +57,19 @@ class AppleMusicVC: UIViewController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "musicCell")
 
     }
+    
+    
+    func getResponse (feedUrl: String) {
+        let musicRequest = ApiRequest(feedUrl: feed)
+        musicRequest.getApiDatas {[weak self] result in
+            switch result{
+            case .failure(let error):
+                print(error)
+            case .success(let musics):
+                self?.musics = musics
+            }
+        }
+    }
 
     
     
@@ -66,8 +90,9 @@ extension AppleMusicVC: UITableViewDataSource {
         
         let music = musics[indexPath.row]
         
-        musicCell.nameLabel.text = music
-        
+        musicCell.artistNameLabel.text = music.artistName
+        musicCell.releaseDateLabel.text = music.releaseDate
+        musicCell.nameLabel.text = music.name
         return cell
         
     }

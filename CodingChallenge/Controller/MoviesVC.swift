@@ -11,13 +11,22 @@ import UIKit
 
 class MoviesVC: UIViewController {
     let tableView = UITableView()
-    var movies = ["aaa", "bbb"]
+    
+    var feed = "us/movies/top-movies/all/50/explicit.json"
+    var movies = [ApiDetails]() {
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
+        getResponse(feedUrl: feed)
         setupTableView()
     }
     
@@ -36,6 +45,18 @@ class MoviesVC: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "movieCell")
+    }
+    
+    func getResponse (feedUrl: String) {
+        let movieRequest = ApiRequest(feedUrl: feed)
+        movieRequest.getApiDatas {[weak self] result in
+            switch result{
+            case .failure(let error):
+                print(error)
+            case .success(let movies):
+                self?.movies = movies
+            }
+        }
     }
     
 }
@@ -57,7 +78,9 @@ extension MoviesVC: UITableViewDataSource {
         let movie = movies[indexPath.row]
         
         
-        movieCell.nameLabel.text = movie
+        movieCell.artistNameLabel.text = movie.artistName
+        movieCell.releaseDateLabel.text = movie.releaseDate
+        movieCell.nameLabel.text = movie.name
         
         return cell
         
