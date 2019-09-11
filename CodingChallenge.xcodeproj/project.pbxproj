@@ -15,6 +15,8 @@
 		72546A0D2329979A00152118 /* AppsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A0C2329979A00152118 /* AppsVC.swift */; };
 		72546A10232997B300152118 /* DarkModeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A0F232997B300152118 /* DarkModeVC.swift */; };
 		72546A122329988D00152118 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A112329988D00152118 /* CustomTableViewCell.swift */; };
+		72546A3323299FE500152118 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A3223299FE500152118 /* APIModel.swift */; };
+		72546A362329A06E00152118 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72546A352329A06E00152118 /* ApiRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		72546A0C2329979A00152118 /* AppsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsVC.swift; sourceTree = "<group>"; };
 		72546A0F232997B300152118 /* DarkModeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeVC.swift; sourceTree = "<group>"; };
 		72546A112329988D00152118 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		72546A3223299FE500152118 /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		72546A352329A06E00152118 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 				72546A052329953400152118 /* Model */,
 				72546A062329953800152118 /* View */,
 				72546A072329953C00152118 /* Controller */,
+				72546A3423299FFE00152118 /* Networking */,
 				725469F32329939500152118 /* AppDelegate.swift */,
 				725469FA2329939600152118 /* Assets.xcassets */,
 				725469FC2329939600152118 /* LaunchScreen.storyboard */,
@@ -74,6 +79,7 @@
 		72546A052329953400152118 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				72546A3223299FE500152118 /* APIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -95,6 +101,14 @@
 				72546A0F232997B300152118 /* DarkModeVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		72546A3423299FFE00152118 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				72546A352329A06E00152118 /* ApiRequest.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,11 +181,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72546A3323299FE500152118 /* APIModel.swift in Sources */,
 				72546A122329988D00152118 /* CustomTableViewCell.swift in Sources */,
 				72546A10232997B300152118 /* DarkModeVC.swift in Sources */,
 				72546A0D2329979A00152118 /* AppsVC.swift in Sources */,
 				725469F42329939500152118 /* AppDelegate.swift in Sources */,
 				72546A092329957300152118 /* AppleMusicVC.swift in Sources */,
+				72546A362329A06E00152118 /* ApiRequest.swift in Sources */,
 				72546A0B2329978D00152118 /* MoviesVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
