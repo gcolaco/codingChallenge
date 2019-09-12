@@ -8,12 +8,18 @@
 
 import UIKit
 
+/*
+ This file is responsible to get the images from the API. The loadImage function, gets the image, put it on the main thread asynchronously, with that we can avoid the Racing problem, this problem happens when one image from a tableView Row is load in another tableView Row when it gets dequeued, when we solve this problem its only going to show the correct image, due to that we use a spinner to show the user that the image is being loaded. This func also cache the image, so everytime we scroll the tableView it doesn't need to reload all the images again, saving us resources.
+ 
+ */
+
 let imageCache = NSCache<AnyObject, AnyObject>()
 
 class CustomImageView: UIImageView {
     var task: URLSessionTask!
     let spinner = UIActivityIndicatorView(style: .gray)
     
+    //Read comment above
     func loadImage(from url: URL) {
         image = nil
         

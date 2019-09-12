@@ -8,6 +8,7 @@
 
 import UIKit
 
+//set the colors for the background and texts from all the views.
 struct Theme {
     let textColor: UIColor
     let backgroundColor: UIColor

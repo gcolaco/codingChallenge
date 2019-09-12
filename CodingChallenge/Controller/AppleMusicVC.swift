@@ -12,7 +12,7 @@ class AppleMusicVC: ThemeController {
     let tableView = ThemeTable()
     
     var feed = "us/apple-music/top-albums/all/50/explicit.json"
-    
+    //feeding the array, with the objects from the API, Using DispatchQueue for a faster loading
     var musics = [ApiDetails]() {
         didSet{
             DispatchQueue.main.async {
@@ -39,7 +39,7 @@ class AppleMusicVC: ThemeController {
         self.tableView.reloadData()
     }
     
-    
+    //MARK: - TableView constraints
     private func setupTableView(){
         view.addSubview(tableView)
         
@@ -52,7 +52,8 @@ class AppleMusicVC: ThemeController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: APPLE_MUSIC_CELL)
     }
     
-    
+    //MARK: - API Request
+    // it makes a request to the API, and gives us a response back, it can be a success(we got that data from the API), or a failure (couldn't get data from the API)
     func getResponse (feedUrl: String) {
         let musicRequest = ApiRequest(feedUrl: feed)
         musicRequest.getApiDatas {[weak self] result in
@@ -67,7 +68,7 @@ class AppleMusicVC: ThemeController {
     
     
 }
-
+//MARK: -  TableView DataSource
 extension AppleMusicVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return musics.count
@@ -96,7 +97,7 @@ extension AppleMusicVC: UITableViewDataSource {
         
     }
 }
-
+//MARK: -  TableView Delegate
 extension AppleMusicVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110

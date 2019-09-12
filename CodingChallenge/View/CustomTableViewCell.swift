@@ -37,11 +37,11 @@ class CustomTableViewCell: ThemeCell {
     private func setupView() {
         safeArea = layoutMarginsGuide
         setupImageView()
-        setupMusicNameLabel()
         setupNameLabel()
+        setupArtistNameLabel()
         setupReleaseDateLabel()
     }
-    
+    //MARK: - ImageView Constraints
     private func setupImageView() {
         addSubview(imageIV)
         imageIV.translatesAutoresizingMaskIntoConstraints = false
@@ -54,8 +54,8 @@ class CustomTableViewCell: ThemeCell {
         imageIV.contentMode = .scaleAspectFit
         imageIV.clipsToBounds = true
     }
-    
-    private func setupMusicNameLabel(){
+    //MARK: -  Name Label Constraints
+    private func setupNameLabel(){
         addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.leadingAnchor.constraint(equalTo: imageIV.trailingAnchor, constant: 5).isActive = true
@@ -66,8 +66,8 @@ class CustomTableViewCell: ThemeCell {
         nameLabel.numberOfLines = 0
         nameLabel.minimumScaleFactor = 0.2
     }
-    
-    private func setupNameLabel(){
+    //MARK: -  Artist Label Constraints
+    private func setupArtistNameLabel(){
         addSubview(artistNameLabel)
         artistNameLabel.translatesAutoresizingMaskIntoConstraints = false
         artistNameLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
@@ -75,6 +75,7 @@ class CustomTableViewCell: ThemeCell {
         artistNameLabel.font = UIFont(name: "Verdana-Bold", size: 12)
     }
     
+    //MARK: -  Release Label Constraints
     private func setupReleaseDateLabel(){
         addSubview(releaseDateLabel)
         releaseDateLabel.translatesAutoresizingMaskIntoConstraints = false

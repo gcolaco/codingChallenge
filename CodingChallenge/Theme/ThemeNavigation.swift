@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ This class, prepare the navigation controller from the app to be able to have the option of getting a dark mode.
+ */
+
 class ThemeNavigation: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
@@ -23,10 +27,12 @@ class ThemeNavigation: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //pass the currente theme for the handler, so it could know what color use.
     @objc private func handleDarkModeAction () {
         handleDarkMode(theme: ThemeManager.currentTheme)
     }
     
+    //sets the background and text color
     func handleDarkMode(theme: Theme) {
         navigationBar.barTintColor = theme.backgroundColor
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor]

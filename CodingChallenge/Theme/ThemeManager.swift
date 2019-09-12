@@ -11,11 +11,10 @@ import Foundation
 struct ThemeManager {
     static let isDarkModeKey = "isDarkMode"
     
-    
+    //get info about the current Theme
     static var currentTheme: Theme {
         return isDarkMode() ? Theme.dark : Theme.light
     }
-    
     
     static func isDarkMode() -> Bool {
         return UserDefaults.standard.bool(forKey: isDarkModeKey)

@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ This class, prepare the tabBar controller from the app to be able to have the option of getting a dark mode.
+ */
+
 class ThemeTabController: UITabBarController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -23,10 +27,12 @@ class ThemeTabController: UITabBarController {
         handleDarkMode(theme: ThemeManager.currentTheme)
     }
     
+    //pass the currente theme for the handler, so it could know what color use.
+
     func handleDarkMode(theme: Theme) {
         tabBar.barTintColor = theme.backgroundColor
     }
-    
+    // it returns the theme controller, because changes in the status bar are made. And the ThemeController is responsible for that
     override var childForStatusBarStyle: UIViewController? {
         return ThemeController()
     }

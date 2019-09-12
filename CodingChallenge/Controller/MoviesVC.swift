@@ -12,6 +12,8 @@ import UIKit
 class MoviesVC: ThemeController {
     let tableView = ThemeTable()
     var feed = "us/movies/top-movies/all/50/explicit.json"
+
+    //feeding the array, with the objects from the API, Using DispatchQueue for a faster loading
     var movies = [ApiDetails]() {
         didSet{
             DispatchQueue.main.async {
@@ -34,7 +36,8 @@ class MoviesVC: ThemeController {
         setupDarkMode()
         self.tableView.reloadData()
     }
-    
+
+    //MARK: - TableView constraints
     private func setupTableView(){
         view.addSubview(tableView)
         
@@ -47,6 +50,8 @@ class MoviesVC: ThemeController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: MOVIE_CELL)
     }
     
+    //MARK: - API Request
+    // it makes a request to the API, and gives us a response back, it can be a success(we got that data from the API), or a failure (couldn't get data from the API)
     func getResponse (feedUrl: String) {
         let movieRequest = ApiRequest(feedUrl: feed)
         movieRequest.getApiDatas {[weak self] result in
@@ -59,11 +64,12 @@ class MoviesVC: ThemeController {
         }
     }
     
-    
+    //MARK: - DarkMode setup
     private func setupDarkMode() {
         ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkMode))
     }
     
+    //it changes the colors from the labels and background of this view acording to the Theme selected
     @objc func enableDarkMode() {
         let currentTheme = ThemeManager.currentTheme
         view.backgroundColor = currentTheme.backgroundColor
@@ -74,7 +80,7 @@ class MoviesVC: ThemeController {
     
 }
 
-
+//MARK: -  TableView DataSource
 extension MoviesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
@@ -90,6 +96,7 @@ extension MoviesVC: UITableViewDataSource {
         
         let movie = movies[indexPath.row]
         
+        //since the image is from a URL, we make sure it doesn't give us back nil and crash the app
         if let url = URL(string: movie.artworkUrl100) {
             movieCell.imageIV.loadImage(from: url)
         }
@@ -104,6 +111,7 @@ extension MoviesVC: UITableViewDataSource {
     }
 }
 
+//MARK: - TabkeView Delegate
 extension MoviesVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110

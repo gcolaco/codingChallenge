@@ -8,7 +8,12 @@
 
 import UIKit
 
+/*
+ This class, prepare any tableView Cell from the app to be able to have the option of getting a dark mode.
+ */
+
 class ThemeCell: UITableViewCell {
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

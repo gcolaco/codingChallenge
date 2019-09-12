@@ -11,6 +11,7 @@ import Foundation
 struct ApiRequest {
     let resourceURL: URL
     
+    //setUp the Url for the API, and assure that its not wrong
     init(feedUrl: String) {
         let urlString = "https://rss.itunes.apple.com/api/v1/\(feedUrl)"
         guard let resourceURL = URL(string: urlString) else {fatalError()}
@@ -18,6 +19,7 @@ struct ApiRequest {
         self.resourceURL = resourceURL
     }
     
+    //get the url, then decode the the API using JSONDecoder, and get the data from the API.
     func getApiDatas(completion: @escaping(Result<[ApiDetails], Error>) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
             guard let jsonData = data else {return}

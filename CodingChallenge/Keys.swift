@@ -8,6 +8,10 @@
 
 import Foundation
 
+/*
+ just a file with keys, to use on identifiers, to avoid TYPO and probably future crashes
+ */
+
 
 let APPLE_MUSIC_CELL = "appleMusicCell"
 let MOVIE_CELL = "movieCell"

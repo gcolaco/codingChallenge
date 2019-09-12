@@ -23,6 +23,7 @@ class DarkModeVC: ThemeController {
         setupDarkModeSwitch()
     }
     
+    //MARK: - Label setup
     func setupDarkModeLabel() {
         view.addSubview(darkModeLabel)
         darkModeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +34,7 @@ class DarkModeVC: ThemeController {
         darkModeLabel.text = "Enable Dark Mode?"
     }
     
+    //MARK: - Switch setup
     func setupDarkModeSwitch() {
         view.addSubview(darkModeSwitch)
         
@@ -46,7 +48,7 @@ class DarkModeVC: ThemeController {
         
     }
     
-    
+    //it will give us the theme dark or light, case toggle isOn then it will be darkMode
     @objc func darkModeAction(_ toggle: UISwitch) {
         toggle.isOn ? ThemeManager.enableDarkMode() : ThemeManager.disableDarkMode()
     }

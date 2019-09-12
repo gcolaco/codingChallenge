@@ -11,6 +11,8 @@ import UIKit
 class AppsVC: ThemeController {
     let tableView = ThemeTable()
     var feed = "us/ios-apps/new-apps-we-love/all/50/explicit.json"
+    
+    //feeding the array, with the objects from the API, Using DispatchQueue for a faster loading
     var apps = [ApiDetails]() {
         didSet{
             DispatchQueue.main.async {
@@ -34,6 +36,7 @@ class AppsVC: ThemeController {
         self.tableView.reloadData()
     }
     
+    //MARK: - TableView constraints
     private func setupTableView(){
         view.addSubview(tableView)
         
@@ -46,6 +49,8 @@ class AppsVC: ThemeController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: APP_CELL)
     }
     
+    //MARK: - API Request
+    // it makes a request to the API, and gives us a response back, it can be a success(we got that data from the API), or a failure (couldn't get data from the API)
     func getResponse (feedUrl: String) {
         let movieRequest = ApiRequest(feedUrl: feed)
         movieRequest.getApiDatas {[weak self] result in
@@ -58,10 +63,11 @@ class AppsVC: ThemeController {
         }
     }
     
+    //MARK: - DarkMode setup
     private func setupDarkMode() {
         ThemeManager.addDarkModeObserver(to: self, selector: #selector(enableDarkMode))
     }
-    
+    //it changes the colors from the labels and background of this view acording to the Theme selected
     @objc func enableDarkMode() {
         let currentTheme = ThemeManager.currentTheme
         view.backgroundColor = currentTheme.backgroundColor
@@ -72,7 +78,7 @@ class AppsVC: ThemeController {
     
 }
 
-
+//MARK: -  TableView DataSource
 extension AppsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
@@ -88,6 +94,7 @@ extension AppsVC: UITableViewDataSource {
         
         let app = apps[indexPath.row]
         
+        //since the image is from a URL, we make sure it doesn't give us back nil and crash the app
         if let url = URL(string: app.artworkUrl100) {
             appCell.imageIV.loadImage(from: url)
         }
@@ -103,6 +110,7 @@ extension AppsVC: UITableViewDataSource {
     }
 }
 
+//MARK: - TabkeView Delegate
 extension AppsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
